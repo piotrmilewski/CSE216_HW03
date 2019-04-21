@@ -1,3 +1,5 @@
+from functools import reduce
+
 def flatten(fList:list) -> list:
     if fList == []:
         return fList
@@ -24,9 +26,14 @@ def compressHelper(cList:list, newList:list, index:int) -> list:
 def compress(cList:list) -> list:
     return compressHelper(cList, [], 0)
 
-print(flatten([ [1, 2, [3, 4] ], [5, 6], 7]))
-print(reverse([[1, 2], [3, [4, 5]], 6]))
-print(compress([1, 1, 4]))
-print(flatten([]))
-print(reverse([]))
-print(compress([]))
+def capitalized(items:list) -> list:
+    return list(map(lambda x: x.capitalize(), items))
+
+def longest(strings:list, from_start=True) -> object:
+    return reduce((lambda x, y: x if len(x) > len(y) else (y if len(x) < len(y) else (x if from_start else y))), strings)
+
+def composition(f, g):
+    return lambda *args, **kwargs: g(f(*args, **kwargs)) # calls f then g
+
+def n_composition(*functions):
+    return reduce(composition, functions) # repeatedly applies composition to functions
