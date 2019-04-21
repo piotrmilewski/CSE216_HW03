@@ -1,5 +1,6 @@
 import java.util.stream.*;
 import java.util.*;
+import java.util.function.*;
 
 class Movie implements Comparable<Movie> 
 { 
@@ -95,6 +96,44 @@ public class testyTesties{
         List betterMappy = FunctionalUtils.flatten(mappy);
 
         System.out.println(betterMappy);
+        */
+
+        /*
+        System.out.println(FunctionalOperations.add.apply(2.0,3.0));
+        System.out.println(FunctionalOperations.diff.apply(2.0,3.0));
+        System.out.println(FunctionalOperations.mult.apply(2.0,3.0));
+        System.out.println(FunctionalOperations.div.apply(2.0,3.0));
+        //System.out.println(div.apply(2.0,0.0));
+
+        List<Double> arg = new ArrayList<Double>();
+        arg.add(1.0);
+        arg.add(1.0);
+        arg.add(3.0);
+        arg.add(0.0);
+        arg.add(4.0);
+
+        List<FunctionalOperations.NamedBiFunction<Double, Double, Double>> bfs = new ArrayList<FunctionalOperations.NamedBiFunction<Double, Double, Double>>();
+        bfs.add(FunctionalOperations.add);
+        bfs.add(FunctionalOperations.mult);
+        bfs.add(FunctionalOperations.add);
+        bfs.add(FunctionalOperations.div);
+        
+        System.out.println(arg);
+        System.out.println(FunctionalOperations.zip(arg, bfs));
+
+        Function<Integer, String> halfvalue2str =
+                new FunctionalOperations.FunctionComposition<Integer, Double, String>().composition.apply(i -> i / 2.0, d -> Double.toString(d));
+        Function<List<String>, Integer> sizeOfFirstItem =
+                new FunctionalOperations.FunctionComposition<List<String>, String, Integer>().composition.apply(list -> list.get(0), String::length);
+        System.out.println("\"" + halfvalue2str.apply(5) + "\"");         // prints "2.5"
+        System.out.println("\"" + halfvalue2str.apply(17) + "\"");        // prints "8.5"
+        System.out.println(sizeOfFirstItem.apply(Arrays.asList("something",
+                                                            "else",
+                                                            "must",
+                                                            "be",
+                                                            "better",
+                                                            "in",
+                                                            "life"))); // prints 9
         */
     }
 
